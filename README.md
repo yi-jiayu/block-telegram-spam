@@ -15,3 +15,12 @@ api_hash = 0123456789abcdef0123456789abcdef
 ```
 
 3. Run the script and log in: `python main.py`
+
+## Running in Docker
+
+Assuming you have already logged in once and generated a .session file:
+
+```
+docker build -t block-telegram-spam .
+docker run -d --restart always -v $PWD/block-telegram-spam.session:/app/block-telegram-spam.session -v $PWD/config.ini:/app/config.ini -e 'PYTHONUNBUFFERED=1' block-telegram-spam
+```
